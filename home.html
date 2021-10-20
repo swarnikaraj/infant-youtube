@@ -29,7 +29,7 @@
 #search-icon{border-top:1px solid gray; border-bottom:1px solid gray;border-right:1px solid gray;height:40px; width:60px; text-align: center;margin-top: 5px; padding-top:4px ;background-color:#F8F8F8;cursor: pointer;}
 
 #left-nav{width:70px}
-#left-nav>div{padding:16px 14px; font-size: 11px;}
+#left-nav>div{padding:16px 14px; font-size: 11px;cursor: pointer;}
 #main{display: flex;}
     </style>
   </head>
@@ -204,6 +204,8 @@ let data =await res.json();
 
 appendpopular(data.items);
 
+console.log(data.items)
+
 
 }
 
@@ -214,14 +216,14 @@ function appendpopular(video_data){
 
     popular_div.innerHTML=null;
 
-video_data.forEach(({id:{videoId}}) => {
+video_data.forEach(({id}) => {
 
-console.log(videoId)
+console.log(id)
 let div=document.createElement('div')
 
 div.style.marginTop="20px"
 
-div.innerHTML=`<iframe width="300" height="216" src="https://www.youtube.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+div.innerHTML=`<iframe width="300" height="216" src="https://www.youtube.com/embed/${id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
 
 popular_div.append(div)
 
